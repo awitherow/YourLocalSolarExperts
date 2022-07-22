@@ -10,9 +10,6 @@ import {
   Icon,
   Image,
   Img,
-  Input,
-  InputGroup,
-  InputLeftElement,
   Link,
   SimpleGrid,
   Stack,
@@ -20,80 +17,100 @@ import {
   IconButton,
   Center,
   LightMode,
-  ButtonGroup,
-  Avatar,
   useBreakpointValue,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
 
-import { FiSearch } from "react-icons/fi";
 import { BsStars } from "react-icons/bs";
 import { FaAccessibleIcon } from "react-icons/fa";
 import { IoRocketSharp } from "react-icons/io5";
 import { VscCircleFilled } from "react-icons/vsc";
-import { FiHelpCircle, FiMenu, FiSettings } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi";
 
-const Logo = () => <>YLSE</>;
+const Logo = ({ src }) => {
+  const logoHeight = useBreakpointValue({ base: 50, md: 60 });
+  return <Image height={`${logoHeight}px`} src={src} />;
+};
 
 export const posts = [
   {
     id: "1",
-    title: "How to write a great blog post",
+    title: "How to Save 26% With the Federal Tax Credit in 2022",
     excerpt:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id.",
-    image:
-      "https://images.unsplash.com/photo-1524492449090-a4e289316d9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1694&q=80",
+      "The Federal Tax Credit is going away more and more each year. As of right now in 2022, it's set at 26%. For any taxpayer, anything you do to upgrade to renewable energy can be included! This means your solar installation, any light ugprades, smart thermostats, insulation, reroofing, batteries, generators and more can be included. This Tax Credit might go away at the end of the year, in 2023, because it must go up for renewable. There's a chance that it'll either end, or go down to 20%. Don't wait around to claim this tax credit. Save yourself from getting price gouged by your Utility provider and claim your Tax Credit with Your Local Solar Experts.",
+    image: "/_tmp/tax_return.jpg",
     tags: [
-      { label: "Community", color: "blue" },
-      { label: "Tutorials", color: "green" },
+      { label: "Taxes", color: "blue" },
+      { label: "Savings", color: "green" },
     ],
-    publishedAt: "Januar 28, 2023",
+    publishedAt: "July 21, 2022",
     author: {
-      name: "Busola Banks",
-      avatarUrl: "https://tinyurl.com/2p8fy9ym",
+      name: "Austin Witherow",
+      avatarUrl: "/_tmp/savant.png",
     },
   },
   {
     id: "2",
-    title: "2022 Developer Survey",
+    title: "Are Solar Panels Actually Worth It?",
     excerpt:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    image: "https://tinyurl.com/4wzh2ph9",
+      "Are solar panels actually worth it? It's one of the most common questions I get, ahd the answer is a resounding YES! Not only are solar panels going to help you completely eliminate or massively offset your energy bill, but you'll build tens of thousands of dollars in equity in your home with your installation!",
+    image: "/_tmp/scales.jpg",
     tags: [
-      { label: "Community", color: "blue" },
-      { label: "Research", color: "red" },
+      { label: "Investment", color: "green" },
+      { label: "Equity", color: "green" },
     ],
-    publishedAt: "December 29, 2022",
+    publishedAt: "July 21, 2022",
     author: {
-      name: "Samy Tom",
-      avatarUrl: "https://tinyurl.com/2p8h98w8",
+      name: "Austin Witherow",
+      avatarUrl: "/_tmp/savant.png",
     },
   },
   {
     id: "3",
-    title: "Women in Tech",
+    title: "What are SRECs and How Can I Earn Them?",
     excerpt:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    image: "https://tinyurl.com/5czjdxj7",
-    tags: [{ label: "Community", color: "blue" }],
-    publishedAt: "November 30, 2022",
+      "Have you heard of Solar Renewable Energy Credits? It's a really awesome benefit that comes with solar installations in certain states. One of the states that offers SRECs is Virginia! An SREC is sort of like an options contract, for your energy. You're allowed to sell the credit at any time, for cash, in a fluctuating market. Wait till the time is right, and reduce your solar bill by up to $100/year!",
+    image: "/_tmp/chart_rising.jpg",
+    tags: [{ label: "Investment", color: "green" }],
+    publishedAt: "July 21, 2022",
     author: {
-      name: "Angelina Gates",
-      avatarUrl: "https://tinyurl.com/2p98t7nh",
+      name: "Austin Witherow",
+      avatarUrl: "/_tmp/savant.png",
     },
   },
   {
     id: "4",
-    title: "Using Chakra UI in Sketch",
+    title: "Lock In Your 1-1 Net Meter Rate!",
     excerpt:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id.",
-    image: "https://tinyurl.com/yh2xkpzm",
+      "Unfortunately, some states like Hawai'i, California and Nevada have either eliminated Net Metering entirely, or drastically reduced the rate at which you get the energy you share with the grid back when you need it. Luckily in states like Virgnia, you can stil claim the 1-1 tier. Meaning in the summer when you produce electricity like crazy, you'll get credited back that energy when you need it, 1-1, in the winter!",
+    image: "/_tmp/handshake.jpg",
     tags: [{ label: "Design", color: "yellow" }],
-    publishedAt: "October 31, 2022",
+    publishedAt: "July 21, 2022",
     author: {
-      name: "Busola Banks",
-      avatarUrl: "https://tinyurl.com/2p8fy9ym",
+      name: "Austin Witherow",
+      avatarUrl: "/_tmp/savant.png",
     },
+  },
+];
+
+const testimonials = [
+  {
+    name: "Samual Wright",
+    role: "Homeowner in Virginia",
+    image: "https://i.pravatar.cc/150?img=60",
+    text: "Austin did a great job explaining how the process works and made us feel super comfortable and excited about converting to solar and going green. So excited we chose Your Local Solar Experts.",
+  },
+  {
+    name: "Oscar McClintoc",
+    role: "Homeowner in Virginia",
+    image: "https://i.pravatar.cc/150?img=52",
+    text: "Your Local Solar Experts went above and beyond to make our system work. Austin was the best! Very knowledgeable, friendly and efficient. I have already referred multiple people and will continue to do so!",
+  },
+  {
+    name: "Leighna Beieau",
+    role: "Homeowner in Virginia",
+    image: "https://i.pravatar.cc/150?img=16",
+    text: "Austin explained things in a way that I could understand and even explain to my neighbors and friends who were also looking into solar. Highly recommend.",
   },
 ];
 
@@ -175,7 +192,7 @@ export const features = [
 import { ImQuotesLeft } from "react-icons/im";
 
 export const Testimonial = (props) => {
-  const { image, name, role, children } = props;
+  const { image, name, role, text } = props;
   return (
     <Stack
       as="blockquote"
@@ -199,11 +216,11 @@ export const Testimonial = (props) => {
         <Box mb="6">
           <Box
             as={ImQuotesLeft}
-            color={mode("blue.600", "blue.400")}
+            color={mode("green.600", "green.400")}
             fontSize="xl"
           />
           <Text mt="3" fontSize="xl" fontWeight="bold" maxW="38rem">
-            {children}
+            {text}
           </Text>
         </Box>
         <HStack>
@@ -222,7 +239,7 @@ export const Testimonial = (props) => {
               as="cite"
               fontStyle="normal"
               fontWeight="extrabold"
-              color={mode("blue.600", "blue.400")}
+              color={mode("green.600", "green.400")}
             >
               {name}
             </Text>
@@ -238,15 +255,32 @@ export const Testimonial = (props) => {
 
 export default function LandingPage() {
   const isDesktop = useBreakpointValue({ base: false, lg: true });
+
+  const headingLineHeightValue = useBreakpointValue({
+    base: "1xl",
+    lg: "69px",
+  });
+
+  const sectionHeaderSize = useBreakpointValue({
+    base: "sm",
+    md: "md",
+    lg: "lg",
+    xl: "xl",
+  });
+
   return (
     <>
-      <Box as="section">
-        <Box as="nav" bg="bg-surface" boxShadow={mode("sm", "sm-dark")}>
-          <Container py={{ base: "3", lg: "4" }}>
-            <Flex justify="space-between">
-              <HStack spacing="4">
-                <Logo />
-                {isDesktop && (
+      <Box as="section" maxW={1280} margin="0 auto" px={4}>
+        <Box
+          as="nav"
+          bg="bg-surface"
+          boxShadow={mode("sm", "sm-dark")}
+          py={{ base: "3", lg: "4" }}
+        >
+          <Flex justify="space-between" alignItems="center">
+            <HStack spacing="4">
+              <Logo src="/logo-large.png" />
+              {/* {isDesktop && (
                   <ButtonGroup variant="ghost" spacing="1">
                     <Button>Home</Button>
                     <Button aria-current="page">Dashboard</Button>
@@ -254,39 +288,48 @@ export default function LandingPage() {
                     <Button>Bookmarks</Button>
                     <Button>Users</Button>
                   </ButtonGroup>
-                )}
-              </HStack>
-              {isDesktop ? (
-                <HStack spacing="4">
-                  <ButtonGroup variant="ghost" spacing="1">
-                    <IconButton
-                      icon={<FiSearch fontSize="1.25rem" />}
-                      aria-label="Search"
+                )} */}
+            </HStack>
+            {isDesktop ? (
+              <>
+                <Button
+                  colorScheme="green"
+                  size="lg"
+                  fontWeight="bold"
+                  fontSize="md"
+                >
+                  Free Quote
+                </Button>
+                {/* <HStack spacing="4">
+                    <ButtonGroup variant="ghost" spacing="1">
+                      <IconButton
+                        icon={<FiSearch fontSize="1.25rem" />}
+                        aria-label="Search"
+                      />
+                      <IconButton
+                        icon={<FiSettings fontSize="1.25rem" />}
+                        aria-label="Settings"
+                      />
+                      <IconButton
+                        icon={<FiHelpCircle fontSize="1.25rem" />}
+                        aria-label="Help Center"
+                      />
+                    </ButtonGroup>
+                    <Avatar
+                      boxSize="10"
+                      name="Christoph Winston"
+                      src="https://tinyurl.com/yhkm2ek8"
                     />
-                    <IconButton
-                      icon={<FiSettings fontSize="1.25rem" />}
-                      aria-label="Settings"
-                    />
-                    <IconButton
-                      icon={<FiHelpCircle fontSize="1.25rem" />}
-                      aria-label="Help Center"
-                    />
-                  </ButtonGroup>
-                  <Avatar
-                    boxSize="10"
-                    name="Christoph Winston"
-                    src="https://tinyurl.com/yhkm2ek8"
-                  />
-                </HStack>
-              ) : (
-                <IconButton
-                  variant="ghost"
-                  icon={<FiMenu fontSize="1.25rem" />}
-                  aria-label="Open Menu"
-                />
-              )}
-            </Flex>
-          </Container>
+                  </HStack> */}
+              </>
+            ) : (
+              <IconButton
+                variant="ghost"
+                icon={<FiMenu fontSize="1.25rem" />}
+                aria-label="Open Menu"
+              />
+            )}
+          </Flex>
         </Box>
       </Box>
       <Box
@@ -295,7 +338,7 @@ export default function LandingPage() {
         py="12"
         position="relative"
         h={{ base: "560px", md: "640px" }}
-        bgImage="url(https://images.unsplash.com/photo-1573164713619-24c711fe7878?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1500&q=80)"
+        bgImage="/solar_roof.jpg"
         bgSize="cover"
         bgPosition="center"
         _after={{
@@ -323,23 +366,28 @@ export default function LandingPage() {
             color="white"
             h="full"
           >
-            <Heading size="2xl" fontWeight="extrabold">
-              Stop Renting. Start Owning Your Energy.
+            <Heading
+              size="2xl"
+              fontWeight="extrabold"
+              lineHeight={headingLineHeightValue}
+            >
+              Stop Renting. <br />
+              Start Owning Your Energy.
             </Heading>
-            <Text fontSize="lg" fontWeight="medium" mt="3">
+            <Text fontSize="lg" maxW={800} margin="16px auto">
               Yep, it's possible, and easy., and it's never been more affordable
-              than RIGHT NOW TODAY, seriously. Let's get a free proposal written
-              up for you and set you up for for massive savings in solar.
+              than RIGHT NOW TODAY, seriously. Let's get a free quote written up
+              for you and set you up for for massive savings in solar.
             </Text>
             <LightMode>
               <Button
-                colorScheme="blue"
+                colorScheme="green"
                 size="lg"
                 mt="6"
                 fontWeight="bold"
                 fontSize="md"
               >
-                Get Your Free Proposal
+                Get a Free Quote
               </Button>
             </LightMode>
           </Center>
@@ -356,16 +404,16 @@ export default function LandingPage() {
           <Box maxW={{ base: "xl", md: "7xl" }} mx="auto">
             <SimpleGrid columns={{ base: 1, md: 3 }}>
               <Box textAlign="center" color="white">
-                <Text>A Gig is won every</Text>
-                <Text fontSize="3xl">10 MIN</Text>
+                <Text>Average Energy Offset</Text>
+                <Text fontSize="3xl">100%+</Text>
               </Box>
               <Box textAlign="center" color="white">
-                <Text>Transactions</Text>
-                <Text fontSize="3xl">6.4M+</Text>
+                <Text>Happy Customers</Text>
+                <Text fontSize="3xl">33,000+</Text>
               </Box>
               <Box textAlign="center" color="white">
-                <Text>Price Range</Text>
-                <Text fontSize="3xl">$5k - $12K</Text>
+                <Text>Limited Time Rebate</Text>
+                <Text fontSize="3xl">6 Month</Text>
               </Box>
             </SimpleGrid>
           </Box>
@@ -375,12 +423,10 @@ export default function LandingPage() {
         <Container py={{ base: "16", md: "24" }}>
           <Stack spacing={{ base: "8", md: "10" }}>
             <Stack spacing={{ base: "4", md: "5" }} align="center">
-              <Heading size={useBreakpointValue({ base: "sm", md: "md" })}>
-                Our Mission
-              </Heading>
+              <Heading size={sectionHeaderSize}>Our Mission</Heading>
               <Text color="muted" maxW="2xl" textAlign="center" fontSize="xl">
-                With this beautiful and responsive React components you will
-                realize your next project in no time.
+                Every family needs Affordable, Reliable, Self Sufficient Clean
+                Energy with Solar.
               </Text>
             </Stack>
             <Stack
@@ -388,173 +434,151 @@ export default function LandingPage() {
               direction={{ base: "column", sm: "row" }}
               justify="center"
             >
-              <Button variant="secondary" size="lg">
-                Learn more
-              </Button>
-              <Button variant="primary" size="lg">
-                Start Free Trial
+              <Button size="md" colorScheme="green">
+                Get a Free Quote
               </Button>
             </Stack>
           </Stack>
         </Container>
       </Box>
-      <Box bg="bg-surface">
-        <Container py={{ base: "16", md: "24" }}>
+      <Box
+        bg="bg-surface"
+        py={{ base: "16", md: "24" }}
+        px={{ base: "4", md: "16", lg: "24" }}
+      >
+        <Stack
+          direction={{ base: "column", md: "row" }}
+          spacing={{ base: "12", lg: "16" }}
+        >
           <Stack
-            direction={{ base: "column", md: "row" }}
-            spacing={{ base: "12", lg: "16" }}
+            spacing={{ base: "8", md: "10" }}
+            width="full"
+            justify="center"
           >
-            <Stack
-              spacing={{ base: "8", md: "10" }}
-              width="full"
-              justify="center"
-            >
-              <Stack spacing={{ base: "4", md: "6" }}>
-                <Heading size={useBreakpointValue({ base: "sm", md: "lg" })}>
-                  Ready for your free trial?
-                </Heading>
-                <Text fontSize={{ base: "lg", md: "xl" }} color="muted">
-                  No credit card is required. You'll be ready to go within a few
-                  minutes. Let's go.
-                </Text>
-              </Stack>
-              <Stack
-                direction={{ base: "column-reverse", md: "row" }}
-                spacing="3"
-              >
-                <Button variant="secondary" size="lg">
-                  Learn more
-                </Button>
-                <Button variant="primary" size="lg">
-                  Start free trial
-                </Button>
-              </Stack>
+            <Stack spacing={{ base: "4", md: "6" }}>
+              <Heading size={useBreakpointValue({ base: "sm", md: "lg" })}>
+                Looking for Expert Installation?
+              </Heading>
+              <Text fontSize={{ base: "lg", md: "xl" }} color="muted">
+                You've come to the right place. With decades of experience,
+                dedicated to bringing you the most Cutting-Edge yet Dependable,
+                Tested Solar Installations. Everything is backed by a 25-year
+                Bumper-to-Bumper Warranty and Fixed Monthly Prices that compete
+                with Utility.
+              </Text>
             </Stack>
-            <Image
-              width="full"
-              height={{ base: "auto", md: "lg" }}
-              objectFit="cover"
-              src="https://images.unsplash.com/photo-1600188769045-bc6026bfc8cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            />
+            <Stack
+              direction={{ base: "column-reverse", md: "row" }}
+              spacing="3"
+            >
+              <Button size="md" colorScheme="green">
+                Get a Free Quote
+              </Button>
+            </Stack>
           </Stack>
-        </Container>
+          <Image
+            width="full"
+            height={{ base: "auto", md: "lg" }}
+            objectFit="cover"
+            src="/example.jpg"
+          />
+        </Stack>
       </Box>
-      <Box bg="bg-surface">
-        <Container py={{ base: "16", md: "24" }}>
+      <Box bg="bg-surface" p={{ base: "4", md: "16", lg: "24" }}>
+        <Stack
+          direction={{ base: "column", md: "row" }}
+          spacing={{ base: "12", lg: "16" }}
+        >
+          <Image
+            width="full"
+            height={{ base: "auto", md: "lg" }}
+            objectFit="cover"
+            src="/kid_book_wow.jpg"
+          />
           <Stack
-            direction={{ base: "column", md: "row" }}
-            spacing={{ base: "12", lg: "16" }}
+            spacing={{ base: "8", md: "10" }}
+            width="full"
+            justify="center"
           >
-            <Stack
-              spacing={{ base: "8", md: "10" }}
-              width="full"
-              justify="center"
-            >
-              <Stack spacing={{ base: "4", md: "6" }}>
-                <Heading size={useBreakpointValue({ base: "sm", md: "lg" })}>
-                  Ready for your free trial?
-                </Heading>
-                <Text fontSize={{ base: "lg", md: "xl" }} color="muted">
-                  No credit card is required. You'll be ready to go within a few
-                  minutes. Let's go.
-                </Text>
-              </Stack>
-              <Stack
-                direction={{ base: "column-reverse", md: "row" }}
-                spacing="3"
-              >
-                <Button variant="secondary" size="lg">
-                  Learn more
-                </Button>
-                <Button variant="primary" size="lg">
-                  Start free trial
-                </Button>
-              </Stack>
+            <Stack spacing={{ base: "4", md: "6" }}>
+              <Heading size={useBreakpointValue({ base: "sm", md: "lg" })}>
+                We're Not Just Installation Experts. We're Educators.
+              </Heading>
+              <Text fontSize={{ base: "lg", md: "xl" }} color="muted">
+                Stuck at a crossroad? We are here to field any questions that
+                you might have about Solar and Clean Energy as you transition
+                towards owning your energy, and no longer renting from Utility!
+              </Text>
             </Stack>
-            <Image
-              width="full"
-              height={{ base: "auto", md: "lg" }}
-              objectFit="cover"
-              src="https://images.unsplash.com/photo-1600188769045-bc6026bfc8cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            />
+            <Stack
+              direction={{ base: "column-reverse", md: "row" }}
+              spacing="3"
+            >
+              <Button size="md" colorScheme="green">
+                Get a Free Quote
+              </Button>
+            </Stack>
           </Stack>
-        </Container>
+        </Stack>
       </Box>
       <Box as="section" bg={mode("gray.50", "gray.800")}>
         <Box
           maxW={{ base: "xl", md: "7xl" }}
           mx="auto"
-          px={{ base: "6", md: "8" }}
+          p={{ base: "6", md: "8" }}
         >
+          <Stack spacing={{ base: "4", md: "5" }} align="center">
+            <Heading size={sectionHeaderSize}>Testimonials</Heading>
+            <Text color="muted" maxW="2xl" textAlign="center" fontSize="xl">
+              Real Reviews from Homeowners Nationwide.
+            </Text>
+          </Stack>
           <SimpleGrid
             py="16"
             columns={{ base: 1, lg: 2 }}
             spacing={{ base: "16", lg: "32" }}
           >
-            <Testimonial
-              name="Jane Cooper"
-              role="Marketing Manager @ Freeko.com"
-              image="https://images.unsplash.com/photo-1571175351749-e8d06f275d85?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTk0fHxsYWR5JTIwc21pbGluZ3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </Testimonial>
-            <Testimonial
-              name="Matt Godin"
-              role="Engineering Manager @ Freezone"
-              image="https://images.unsplash.com/photo-1603987248955-9c142c5ae89b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fGhhbmRzb21lJTIwbWFuJTIwc21pbGluZ3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-            >
-              Accumsan tortor posuere ac ut consequat semper. Turpis cursus in
-              hac habitasse platea. Hendrerit dolor magna eget est
-            </Testimonial>
+            {testimonials.map((testy) => (
+              <Testimonial {...testy} />
+            ))}
           </SimpleGrid>
         </Box>
       </Box>
-      <Box bg="bg-surface">
-        <Box bg="bg-accent" color="on-accent">
-          <Container
-            pt={{ base: "16", md: "24" }}
-            pb={{ base: "32", md: "48" }}
-          >
-            <Stack spacing={{ base: "8", md: "10" }} align="center">
-              <Stack spacing={{ base: "4", md: "6" }} textAlign="center">
-                <Stack spacing="4">
-                  <Text
-                    fontWeight="semibold"
-                    color="blue.50"
-                    fontSize={{ base: "sm", md: "md" }}
-                  >
-                    Our Blog
-                  </Text>
-                  <Heading size={useBreakpointValue({ base: "md", md: "lg" })}>
-                    Latest blog posts
-                  </Heading>
-                </Stack>
+      <Box bg="bg-surface" maxW={1280} margin="0 auto">
+        <Box
+          bg="bg-accent"
+          color="on-accent"
+          pt={{ base: "16", md: "24" }}
+          pb={{ base: "32", md: "48" }}
+        >
+          <Stack spacing={{ base: "8", md: "10" }} align="center">
+            <Stack spacing={{ base: "4", md: "6" }} textAlign="center">
+              <Stack spacing="4">
                 <Text
-                  fontSize={{ base: "lg", md: "xl" }}
-                  maxW="2xl"
-                  color="on-accent-muted"
+                  fontWeight="semibold"
+                  color="green.500"
+                  fontSize={{ base: "sm", md: "md" }}
                 >
-                  Ice cream pudding dragée macaroon donut marzipan chocolate
+                  The Truth About Energy Independence
                 </Text>
+                <Heading size={useBreakpointValue({ base: "md", md: "lg" })}>
+                  Get the Latest News, Legislation and Savings
+                </Heading>
               </Stack>
-              <InputGroup size="lg" maxW={{ md: "sm" }}>
+            </Stack>
+            {/* <InputGroup size="lg" maxW={{ md: "sm" }}>
                 <InputLeftElement pointerEvents="none">
                   <Icon as={FiSearch} color="on-accent" boxSize="5" />
                 </InputLeftElement>
                 <Input
                   placeholder="Search"
                   variant="filled"
-                  colorScheme="blue"
+                  colorScheme="green"
                 />
-              </InputGroup>
-            </Stack>
-          </Container>
+              </InputGroup> */}
+          </Stack>
         </Box>
-        <Container
-          pb={{ base: "16", md: "24" }}
-          mt={{ base: "-16", md: "-24" }}
-        >
+        <Box pb={{ base: "16", md: "24" }} mt={{ base: "-16", md: "-24" }}>
           <Stack spacing={{ base: "16", md: "24" }}>
             <Stack spacing={{ base: "12", md: "16" }}>
               <BlogPost post={posts[0]} isHero />
@@ -568,15 +592,13 @@ export default function LandingPage() {
               </SimpleGrid>
             </Stack>
           </Stack>
-        </Container>
+        </Box>
       </Box>
       <Box as="section" bg="bg-surface">
         <Container py={{ base: "16", md: "24" }}>
           <Stack spacing={{ base: "8", md: "10" }}>
             <Stack spacing={{ base: "4", md: "5" }} align="center">
-              <Heading size={useBreakpointValue({ base: "sm", md: "md" })}>
-                Our Mission
-              </Heading>
+              <Heading size={sectionHeaderSize}>Our Mission</Heading>
               <Text color="muted" maxW="2xl" textAlign="center" fontSize="xl">
                 With this beautiful and responsive React components you will
                 realize your next project in no time.
@@ -587,11 +609,8 @@ export default function LandingPage() {
               direction={{ base: "column", sm: "row" }}
               justify="center"
             >
-              <Button variant="secondary" size="lg">
-                Learn more
-              </Button>
-              <Button variant="primary" size="lg">
-                Start Free Trial
+              <Button size="md" colorScheme="green">
+                Get a Free Quote
               </Button>
             </Stack>
           </Stack>
