@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Badge,
   Box,
   Button,
+  Center,
   Container,
   Flex,
   Heading,
@@ -10,115 +11,37 @@ import {
   Icon,
   Image,
   Img,
+  LightMode,
   Link,
   SimpleGrid,
   Stack,
   Text,
-  IconButton,
-  Center,
-  LightMode,
   useBreakpointValue,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
 
-import { BsStars } from "react-icons/bs";
-import { FaAccessibleIcon } from "react-icons/fa";
-import { IoRocketSharp } from "react-icons/io5";
+import TawkTo from "tawkto-react";
+
 import { VscCircleFilled } from "react-icons/vsc";
-import { FiMenu } from "react-icons/fi";
+import { ImQuotesLeft } from "react-icons/im";
+
+import { posts, testimonials } from "../data";
 
 const Logo = ({ src }) => {
   const logoHeight = useBreakpointValue({ base: 50, md: 60 });
   return <Image height={`${logoHeight}px`} src={src} />;
 };
 
-export const posts = [
-  {
-    id: "1",
-    title: "How to Save 26% With the Federal Tax Credit in 2022",
-    excerpt:
-      "The Federal Tax Credit is going away more and more each year. As of right now in 2022, it's set at 26%. For any taxpayer, anything you do to upgrade to renewable energy can be included! This means your solar installation, any light ugprades, smart thermostats, insulation, reroofing, batteries, generators and more can be included. This Tax Credit might go away at the end of the year, in 2023, because it must go up for renewable. There's a chance that it'll either end, or go down to 20%. Don't wait around to claim this tax credit. Save yourself from getting price gouged by your Utility provider and claim your Tax Credit with Your Local Solar Experts.",
-    image: "/_tmp/tax_return.jpg",
-    tags: [
-      { label: "Taxes", color: "blue" },
-      { label: "Savings", color: "green" },
-    ],
-    publishedAt: "July 21, 2022",
-    author: {
-      name: "Austin Witherow",
-      avatarUrl: "/_tmp/savant.png",
-    },
-  },
-  {
-    id: "2",
-    title: "Are Solar Panels Actually Worth It?",
-    excerpt:
-      "Are solar panels actually worth it? It's one of the most common questions I get, ahd the answer is a resounding YES! Not only are solar panels going to help you completely eliminate or massively offset your energy bill, but you'll build tens of thousands of dollars in equity in your home with your installation!",
-    image: "/_tmp/scales.jpg",
-    tags: [
-      { label: "Investment", color: "green" },
-      { label: "Equity", color: "green" },
-    ],
-    publishedAt: "July 21, 2022",
-    author: {
-      name: "Austin Witherow",
-      avatarUrl: "/_tmp/savant.png",
-    },
-  },
-  {
-    id: "3",
-    title: "What are SRECs and How Can I Earn Them?",
-    excerpt:
-      "Have you heard of Solar Renewable Energy Credits? It's a really awesome benefit that comes with solar installations in certain states. One of the states that offers SRECs is Virginia! An SREC is sort of like an options contract, for your energy. You're allowed to sell the credit at any time, for cash, in a fluctuating market. Wait till the time is right, and reduce your solar bill by up to $100/year!",
-    image: "/_tmp/chart_rising.jpg",
-    tags: [{ label: "Investment", color: "green" }],
-    publishedAt: "July 21, 2022",
-    author: {
-      name: "Austin Witherow",
-      avatarUrl: "/_tmp/savant.png",
-    },
-  },
-  {
-    id: "4",
-    title: "Lock In Your 1-1 Net Meter Rate!",
-    excerpt:
-      "Unfortunately, some states like Hawai'i, California and Nevada have either eliminated Net Metering entirely, or drastically reduced the rate at which you get the energy you share with the grid back when you need it. Luckily in states like Virgnia, you can stil claim the 1-1 tier. Meaning in the summer when you produce electricity like crazy, you'll get credited back that energy when you need it, 1-1, in the winter!",
-    image: "/_tmp/handshake.jpg",
-    tags: [{ label: "Design", color: "yellow" }],
-    publishedAt: "July 21, 2022",
-    author: {
-      name: "Austin Witherow",
-      avatarUrl: "/_tmp/savant.png",
-    },
-  },
-];
+export const BlogPost = ({ post, isHero, ...props }) => {
+  const sectionHeaderSize = useBreakpointValue({
+    base: "md",
+    lg: "lg",
+    xl: "xl",
+  });
 
-const testimonials = [
-  {
-    name: "Samual Wright",
-    role: "Homeowner in Virginia",
-    image: "https://i.pravatar.cc/150?img=60",
-    text: "Austin did a great job explaining how the process works and made us feel super comfortable and excited about converting to solar and going green. So excited we chose Your Local Solar Experts.",
-  },
-  {
-    name: "Oscar McClintoc",
-    role: "Homeowner in Virginia",
-    image: "https://i.pravatar.cc/150?img=52",
-    text: "Your Local Solar Experts went above and beyond to make our system work. Austin was the best! Very knowledgeable, friendly and efficient. I have already referred multiple people and will continue to do so!",
-  },
-  {
-    name: "Leighna Beieau",
-    role: "Homeowner in Virginia",
-    image: "https://i.pravatar.cc/150?img=16",
-    text: "Austin explained things in a way that I could understand and even explain to my neighbors and friends who were also looking into solar. Highly recommend.",
-  },
-];
-
-export const BlogPost = (props) => {
-  const { post, isHero } = props;
   return (
     <Link _hover={{ textDecor: "none" }} role="group">
-      <Stack spacing="8">
+      <Stack spacing="8" px={4}>
         <Box overflow="hidden">
           <Image
             src={post.image}
@@ -145,14 +68,7 @@ export const BlogPost = (props) => {
               <Icon as={VscCircleFilled} boxSize="2" />
               <Text> {post.publishedAt}</Text>
             </HStack>
-            <Heading
-              size={useBreakpointValue({
-                base: "xs",
-                md: isHero ? "sm" : "xs",
-              })}
-            >
-              {post.title}
-            </Heading>
+            <Heading size={sectionHeaderSize}>{post.title}</Heading>
             <Text color="muted">{post.excerpt}</Text>
           </Stack>
           <HStack>
@@ -167,29 +83,6 @@ export const BlogPost = (props) => {
     </Link>
   );
 };
-
-export const features = [
-  {
-    name: "210+ Components",
-    description:
-      "Chakra UI Pro has 210+ componentsto help you develop your project faster.",
-    icon: BsStars,
-  },
-  {
-    name: "Production Ready",
-    description:
-      "Effortlessly create your next production-ready experience with Chakra UI Pro components.",
-    icon: IoRocketSharp,
-  },
-  {
-    name: "Accessible",
-    description:
-      "Accessibility first. That's why we pay attention to accessibility right from the start.",
-    icon: FaAccessibleIcon,
-  },
-];
-
-import { ImQuotesLeft } from "react-icons/im";
 
 export const Testimonial = (props) => {
   const { image, name, role, text } = props;
@@ -254,16 +147,21 @@ export const Testimonial = (props) => {
 };
 
 export default function LandingPage() {
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      const tawk = new TawkTo("62d0e6c57b967b1179999dde", "1g800asr3");
+      tawk.onStatusChange((status) =>
+        console.log("tawk initiated, status: ", status)
+      );
+    }
+  }, []);
   const isDesktop = useBreakpointValue({ base: false, lg: true });
-
   const headingLineHeightValue = useBreakpointValue({
     base: "1xl",
     lg: "69px",
   });
-
   const sectionHeaderSize = useBreakpointValue({
-    base: "sm",
-    md: "md",
+    base: "md",
     lg: "lg",
     xl: "xl",
   });
@@ -290,45 +188,14 @@ export default function LandingPage() {
                   </ButtonGroup>
                 )} */}
             </HStack>
-            {isDesktop ? (
-              <>
-                <Button
-                  colorScheme="green"
-                  size="lg"
-                  fontWeight="bold"
-                  fontSize="md"
-                >
-                  Free Quote
-                </Button>
-                {/* <HStack spacing="4">
-                    <ButtonGroup variant="ghost" spacing="1">
-                      <IconButton
-                        icon={<FiSearch fontSize="1.25rem" />}
-                        aria-label="Search"
-                      />
-                      <IconButton
-                        icon={<FiSettings fontSize="1.25rem" />}
-                        aria-label="Settings"
-                      />
-                      <IconButton
-                        icon={<FiHelpCircle fontSize="1.25rem" />}
-                        aria-label="Help Center"
-                      />
-                    </ButtonGroup>
-                    <Avatar
-                      boxSize="10"
-                      name="Christoph Winston"
-                      src="https://tinyurl.com/yhkm2ek8"
-                    />
-                  </HStack> */}
-              </>
-            ) : (
-              <IconButton
-                variant="ghost"
-                icon={<FiMenu fontSize="1.25rem" />}
-                aria-label="Open Menu"
-              />
-            )}
+            <Button
+              colorScheme="green"
+              size={isDesktop ? "md" : "sm"}
+              fontWeight="bold"
+              fontSize="md"
+            >
+              {isDesktop ? "Get a Free Quote" : "Free Quote"}
+            </Button>
           </Flex>
         </Box>
       </Box>
@@ -419,14 +286,16 @@ export default function LandingPage() {
           </Box>
         </Box>
       </Box>
-      <Box as="section" bg="bg-surface">
-        <Container py={{ base: "16", md: "24" }}>
+      <Box as="section" bg="bg-surface" py={{ base: "16", md: "24" }}>
+        <Container>
           <Stack spacing={{ base: "8", md: "10" }}>
             <Stack spacing={{ base: "4", md: "5" }} align="center">
               <Heading size={sectionHeaderSize}>Our Mission</Heading>
               <Text color="muted" maxW="2xl" textAlign="center" fontSize="xl">
                 Every family needs Affordable, Reliable, Self Sufficient Clean
-                Energy with Solar.
+                Energy with Solar. It's our mission to provide the highest
+                quality, yet most affordable installation. No money down, no
+                hidden costs or fees, NO CATCHES. Get started with Solar Today.
               </Text>
             </Stack>
             <Stack
@@ -456,7 +325,7 @@ export default function LandingPage() {
             justify="center"
           >
             <Stack spacing={{ base: "4", md: "6" }}>
-              <Heading size={useBreakpointValue({ base: "sm", md: "lg" })}>
+              <Heading size={sectionHeaderSize}>
                 Looking for Expert Installation?
               </Heading>
               <Text fontSize={{ base: "lg", md: "xl" }} color="muted">
@@ -501,7 +370,7 @@ export default function LandingPage() {
             justify="center"
           >
             <Stack spacing={{ base: "4", md: "6" }}>
-              <Heading size={useBreakpointValue({ base: "sm", md: "lg" })}>
+              <Heading size={sectionHeaderSize}>
                 We're Not Just Installation Experts. We're Educators.
               </Heading>
               <Text fontSize={{ base: "lg", md: "xl" }} color="muted">
@@ -539,7 +408,7 @@ export default function LandingPage() {
             spacing={{ base: "16", lg: "32" }}
           >
             {testimonials.map((testy) => (
-              <Testimonial {...testy} />
+              <Testimonial key={testy.id} {...testy} />
             ))}
           </SimpleGrid>
         </Box>
@@ -564,6 +433,12 @@ export default function LandingPage() {
                 <Heading size={useBreakpointValue({ base: "md", md: "lg" })}>
                   Get the Latest News, Legislation and Savings
                 </Heading>
+                <Text color="muted" maxW="2xl" textAlign="center" fontSize="xl">
+                  There are things that you would otherwise NEVER FIND OUT from
+                  your Utility company unless you look here. Why would a
+                  monopoly be incentivized to tell you the truth. Free yourself,
+                  your energy, and your life with the Truth.
+                </Text>
               </Stack>
             </Stack>
             {/* <InputGroup size="lg" maxW={{ md: "sm" }}>
@@ -594,14 +469,18 @@ export default function LandingPage() {
           </Stack>
         </Box>
       </Box>
-      <Box as="section" bg="bg-surface">
-        <Container py={{ base: "16", md: "24" }}>
+      <Box as="section" bg="bg-surface" py={{ base: "16", md: "24" }}>
+        <Container>
           <Stack spacing={{ base: "8", md: "10" }}>
             <Stack spacing={{ base: "4", md: "5" }} align="center">
-              <Heading size={sectionHeaderSize}>Our Mission</Heading>
+              <Heading size={sectionHeaderSize} textAlign="center">
+                Start Your Solar Journey
+              </Heading>
               <Text color="muted" maxW="2xl" textAlign="center" fontSize="xl">
-                With this beautiful and responsive React components you will
-                realize your next project in no time.
+                The opportunity for Solar is Now. Get you Proposal and a
+                Personalized Clean Energy Consultation Plan and join Thousands
+                Getting Started with Solar and Secure Your Own Solar Power
+                Plant, Today!
               </Text>
             </Stack>
             <Stack
