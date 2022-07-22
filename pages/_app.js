@@ -1,27 +1,29 @@
-// pages/_app.js
 import { ChakraProvider } from "@chakra-ui/react";
+import Router from "next/router";
+import NProgress from "nprogress";
 
-// 1. Import the extendTheme function
 import { extendTheme } from "@chakra-ui/react";
 
-// 2. Extend the theme to include custom colors, fonts, etc
-const colors = {
-  brand: {
-    900: "#1a365d",
-    800: "#153e75",
-    700: "#2a69ac",
+import "nprogress.css";
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/700.css";
+
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
+
+const theme = extendTheme({
+  fonts: {
+    heading: "Inter",
+    body: "Inter",
   },
-};
+});
 
-const theme = extendTheme({ colors });
-
-// 3. Pass the `theme` prop to the `ChakraProvider`
-function MyApp({ Component, pageProps }) {
-  return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
-  );
-}
+const MyApp = ({ Component, pageProps }) => (
+  <ChakraProvider resetCSS theme={theme}>
+    <Component {...pageProps} />
+  </ChakraProvider>
+);
 
 export default MyApp;

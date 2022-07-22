@@ -1,6 +1,63 @@
-import { BsStars } from "react-icons/bs";
-import { FaAccessibleIcon } from "react-icons/fa";
-import { IoRocketSharp } from "react-icons/io5";
+export const questions = [
+  {
+    questionText:
+      "Coal Plants Nationwide are being forced to shut down due to Federal Legislation as of March 2023",
+    answerOptions: [
+      { answerText: "True", isCorrect: true },
+      { answerText: "False", isCorrect: false },
+    ],
+  },
+  {
+    questionText:
+      "I have a backup plan for rolling blackouts, utility price hikes and energy rental from high cost states.",
+    answerOptions: [
+      { answerText: "Yes", isCorrect: false },
+      { answerText: "No", isCorrect: true },
+    ],
+  },
+  {
+    questionText:
+      "I am the homeowner, or am in good relationship with homeowners that I rent from.",
+    answerOptions: [
+      { answerText: "Yes", isCorrect: true },
+      { answerText: "No", isCorrect: false },
+    ],
+  },
+  {
+    questionText: "What's your average utility bill cost look like?",
+    answerOptions: [
+      { answerText: "$50+", isCorrect: true },
+      { answerText: "$100+", isCorrect: true },
+      { answerText: "$200+", isCorrect: true },
+      { answerText: "$300+", isCorrect: true },
+      { answerText: "More! 😵", isCorrect: true },
+    ],
+  },
+  {
+    questionText: "Is your Credit Score above 650?",
+    answerOptions: [
+      { answerText: "Yes", isCorrect: true },
+      { answerText: "No", isCorrect: false },
+    ],
+  },
+  {
+    questionText: "Is your combined taxable household income above $35,000?",
+    answerOptions: [
+      { answerText: "Yes", isCorrect: true },
+      { answerText: "No", isCorrect: false },
+    ],
+  },
+  {
+    questionText:
+      "How soon would you like to Own your Energy and Stop Renting from a Monopoly?",
+    answerOptions: [
+      { answerText: "Right Now!", isCorrect: true },
+      { answerText: "This Month", isCorrect: true },
+      { answerText: "This Year", isCorrect: true },
+      { answerText: "I Need More Information", isCorrect: true },
+    ],
+  },
+];
 
 export const posts = [
   {

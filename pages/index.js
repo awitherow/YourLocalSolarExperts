@@ -1,18 +1,12 @@
 import React, { useEffect } from "react";
+import Link from "next/link";
 import {
-  Badge,
   Box,
   Button,
   Center,
   Container,
-  Flex,
   Heading,
-  HStack,
-  Icon,
   Image,
-  Img,
-  LightMode,
-  Link,
   SimpleGrid,
   Stack,
   Text,
@@ -22,129 +16,12 @@ import {
 
 import TawkTo from "tawkto-react";
 
-import { VscCircleFilled } from "react-icons/vsc";
-import { ImQuotesLeft } from "react-icons/im";
+import Layout from "components/Layout";
+import { BlogPost } from "components/BlogPost";
+import { Testimonial } from "components/Testimonial";
+import { FreeQuoteButton } from "components/FreeQuoteButton";
 
-import { posts, testimonials } from "../data";
-
-const Logo = ({ src }) => {
-  const logoHeight = useBreakpointValue({ base: 50, md: 60 });
-  return <Image height={`${logoHeight}px`} src={src} />;
-};
-
-export const BlogPost = ({ post, isHero, ...props }) => {
-  const sectionHeaderSize = useBreakpointValue({
-    base: "md",
-    lg: "lg",
-    xl: "xl",
-  });
-
-  return (
-    <Link _hover={{ textDecor: "none" }} role="group">
-      <Stack spacing="8" px={4}>
-        <Box overflow="hidden">
-          <Image
-            src={post.image}
-            alt={post.title}
-            width="full"
-            height={useBreakpointValue({
-              base: "15rem",
-              md: isHero ? "sm" : "15rem",
-            })}
-            objectFit="cover"
-            transition="all 0.2s"
-            _groupHover={{ transform: "scale(1.05)" }}
-          />
-        </Box>
-        <Stack spacing="6">
-          <Stack spacing="3">
-            <HStack
-              spacing="1"
-              fontSize="sm"
-              fontWeight="semibold"
-              color="accent"
-            >
-              <Text>{post.author.name}</Text>
-              <Icon as={VscCircleFilled} boxSize="2" />
-              <Text> {post.publishedAt}</Text>
-            </HStack>
-            <Heading size={sectionHeaderSize}>{post.title}</Heading>
-            <Text color="muted">{post.excerpt}</Text>
-          </Stack>
-          <HStack>
-            {post.tags.map((tag, id) => (
-              <Badge key={id} colorScheme={tag.color}>
-                {tag.label}
-              </Badge>
-            ))}
-          </HStack>
-        </Stack>
-      </Stack>
-    </Link>
-  );
-};
-
-export const Testimonial = (props) => {
-  const { image, name, role, text } = props;
-  return (
-    <Stack
-      as="blockquote"
-      direction="row"
-      spacing={{ base: "0", md: "8" }}
-      flex="1"
-      {...props}
-    >
-      <Img
-        display={{ base: "none", md: "block" }}
-        mt="2"
-        flexShrink={0}
-        src={image}
-        alt={name}
-        objectFit="cover"
-        w={{ base: "20", md: "32" }}
-        h={{ base: "20", md: "32" }}
-        rounded="full"
-      />
-      <Flex w="full" direction="column">
-        <Box mb="6">
-          <Box
-            as={ImQuotesLeft}
-            color={mode("green.600", "green.400")}
-            fontSize="xl"
-          />
-          <Text mt="3" fontSize="xl" fontWeight="bold" maxW="38rem">
-            {text}
-          </Text>
-        </Box>
-        <HStack>
-          <Img
-            display={{ base: "block", md: "none" }}
-            flexShrink={0}
-            src={image}
-            alt={name}
-            objectFit="cover"
-            w={{ base: "12", md: "32" }}
-            h={{ base: "12", md: "32" }}
-            rounded="full"
-          />
-          <Box>
-            <Text
-              as="cite"
-              fontStyle="normal"
-              fontWeight="extrabold"
-              color={mode("green.600", "green.400")}
-            >
-              {name}
-            </Text>
-            <Text fontSize="sm" color={mode("gray.600", "gray.400")}>
-              {role}
-            </Text>
-          </Box>
-        </HStack>
-      </Flex>
-    </Stack>
-  );
-};
+import { posts, testimonials } from "data";
 
 export default function LandingPage() {
   useEffect(() => {
@@ -155,7 +32,6 @@ export default function LandingPage() {
       );
     }
   }, []);
-  const isDesktop = useBreakpointValue({ base: false, lg: true });
   const headingLineHeightValue = useBreakpointValue({
     base: "1xl",
     lg: "69px",
@@ -167,38 +43,7 @@ export default function LandingPage() {
   });
 
   return (
-    <>
-      <Box as="section" maxW={1280} margin="0 auto" px={4}>
-        <Box
-          as="nav"
-          bg="bg-surface"
-          boxShadow={mode("sm", "sm-dark")}
-          py={{ base: "3", lg: "4" }}
-        >
-          <Flex justify="space-between" alignItems="center">
-            <HStack spacing="4">
-              <Logo src="/logo-large.png" />
-              {/* {isDesktop && (
-                  <ButtonGroup variant="ghost" spacing="1">
-                    <Button>Home</Button>
-                    <Button aria-current="page">Dashboard</Button>
-                    <Button>Tasks</Button>
-                    <Button>Bookmarks</Button>
-                    <Button>Users</Button>
-                  </ButtonGroup>
-                )} */}
-            </HStack>
-            <Button
-              colorScheme="green"
-              size={isDesktop ? "md" : "sm"}
-              fontWeight="bold"
-              fontSize="md"
-            >
-              {isDesktop ? "Get a Free Quote" : "Free Quote"}
-            </Button>
-          </Flex>
-        </Box>
-      </Box>
+    <Layout>
       <Box
         as="section"
         bg="gray.800"
@@ -246,17 +91,7 @@ export default function LandingPage() {
               than RIGHT NOW TODAY, seriously. Let's get a free quote written up
               for you and set you up for for massive savings in solar.
             </Text>
-            <LightMode>
-              <Button
-                colorScheme="green"
-                size="lg"
-                mt="6"
-                fontWeight="bold"
-                fontSize="md"
-              >
-                Get a Free Quote
-              </Button>
-            </LightMode>
+            <FreeQuoteButton />
           </Center>
         </Box>
         <Box
@@ -303,9 +138,7 @@ export default function LandingPage() {
               direction={{ base: "column", sm: "row" }}
               justify="center"
             >
-              <Button size="md" colorScheme="green">
-                Get a Free Quote
-              </Button>
+              <FreeQuoteButton />
             </Stack>
           </Stack>
         </Container>
@@ -340,9 +173,7 @@ export default function LandingPage() {
               direction={{ base: "column-reverse", md: "row" }}
               spacing="3"
             >
-              <Button size="md" colorScheme="green">
-                Get a Free Quote
-              </Button>
+              <FreeQuoteButton />
             </Stack>
           </Stack>
           <Image
@@ -383,9 +214,7 @@ export default function LandingPage() {
               direction={{ base: "column-reverse", md: "row" }}
               spacing="3"
             >
-              <Button size="md" colorScheme="green">
-                Get a Free Quote
-              </Button>
+              <FreeQuoteButton />
             </Stack>
           </Stack>
         </Stack>
@@ -469,32 +298,6 @@ export default function LandingPage() {
           </Stack>
         </Box>
       </Box>
-      <Box as="section" bg="bg-surface" py={{ base: "16", md: "24" }}>
-        <Container>
-          <Stack spacing={{ base: "8", md: "10" }}>
-            <Stack spacing={{ base: "4", md: "5" }} align="center">
-              <Heading size={sectionHeaderSize} textAlign="center">
-                Start Your Solar Journey
-              </Heading>
-              <Text color="muted" maxW="2xl" textAlign="center" fontSize="xl">
-                The opportunity for Solar is Now. Get you Proposal and a
-                Personalized Clean Energy Consultation Plan and join Thousands
-                Getting Started with Solar and Secure Your Own Solar Power
-                Plant, Today!
-              </Text>
-            </Stack>
-            <Stack
-              spacing="3"
-              direction={{ base: "column", sm: "row" }}
-              justify="center"
-            >
-              <Button size="md" colorScheme="green">
-                Get a Free Quote
-              </Button>
-            </Stack>
-          </Stack>
-        </Container>
-      </Box>
-    </>
+    </Layout>
   );
 }
