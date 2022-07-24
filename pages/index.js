@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Link from "next/link";
 import {
   Box,
   Button,
@@ -87,9 +86,10 @@ export default function LandingPage() {
               Start Owning Your Energy.
             </Heading>
             <Text fontSize="lg" maxW={800} margin="16px auto">
-              Yep, it's possible, and easy., and it's never been more affordable
-              than RIGHT NOW TODAY, seriously. Let's get a free quote written up
-              for you and set you up for for massive savings in solar.
+              Yep, it&apos;s possible, and easy., and it&apos;s never been more
+              affordable than RIGHT NOW TODAY, seriously. Let&apos;s get a free
+              quote written up for you and set you up for for massive savings in
+              solar.
             </Text>
             <FreeQuoteButton />
           </Center>
@@ -128,7 +128,7 @@ export default function LandingPage() {
               <Heading size={sectionHeaderSize}>Our Mission</Heading>
               <Text color="muted" maxW="2xl" textAlign="center" fontSize="xl">
                 Every family needs Affordable, Reliable, Self Sufficient Clean
-                Energy with Solar. It's our mission to provide the highest
+                Energy with Solar. It&apos;s our mission to provide the highest
                 quality, yet most affordable installation. No money down, no
                 hidden costs or fees, NO CATCHES. Get started with Solar Today.
               </Text>
@@ -162,7 +162,7 @@ export default function LandingPage() {
                 Looking for Expert Installation?
               </Heading>
               <Text fontSize={{ base: "lg", md: "xl" }} color="muted">
-                You've come to the right place. With decades of experience,
+                You&apos;ve come to the right place. With decades of experience,
                 dedicated to bringing you the most Cutting-Edge yet Dependable,
                 Tested Solar Installations. Everything is backed by a 25-year
                 Bumper-to-Bumper Warranty and Fixed Monthly Prices that compete
@@ -181,6 +181,7 @@ export default function LandingPage() {
             height={{ base: "auto", md: "lg" }}
             objectFit="cover"
             src="/example.jpg"
+            alt="our premium matte black solar panels on a roof at sunset"
           />
         </Stack>
       </Box>
@@ -194,6 +195,7 @@ export default function LandingPage() {
             height={{ base: "auto", md: "lg" }}
             objectFit="cover"
             src="/kid_book_wow.jpg"
+            alt="photo of a kid holding a book saying wow!"
           />
           <Stack
             spacing={{ base: "8", md: "10" }}
@@ -202,7 +204,7 @@ export default function LandingPage() {
           >
             <Stack spacing={{ base: "4", md: "6" }}>
               <Heading size={sectionHeaderSize}>
-                We're Not Just Installation Experts. We're Educators.
+                We&apos;re Not Just Installation Experts. We&apos;re Educators.
               </Heading>
               <Text fontSize={{ base: "lg", md: "xl" }} color="muted">
                 Stuck at a crossroad? We are here to field any questions that
@@ -259,7 +261,7 @@ export default function LandingPage() {
                 >
                   The Truth About Energy Independence
                 </Text>
-                <Heading size={useBreakpointValue({ base: "md", md: "lg" })}>
+                <Heading size={sectionHeaderSize}>
                   Get the Latest News, Legislation and Savings
                 </Heading>
                 <Text color="muted" maxW="2xl" textAlign="center" fontSize="xl">

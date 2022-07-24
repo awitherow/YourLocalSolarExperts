@@ -1,5 +1,6 @@
 export const questions = [
   {
+    id: "awareness",
     questionText:
       "Coal Plants Nationwide are being forced to shut down due to Federal Legislation as of March 2023",
     answerOptions: [
@@ -8,25 +9,37 @@ export const questions = [
     ],
   },
   {
+    id: "plan",
     questionText:
-      "I have a backup plan for rolling blackouts, utility price hikes and energy rental from high cost states.",
+      "You have a energy backup plan for pending rolling blackouts, utility price hikes and energy rental from high cost states (increased probabilities after March 2023)",
     answerOptions: [
-      { answerText: "Yes", isCorrect: false },
-      { answerText: "No", isCorrect: true },
+      { answerText: "True", isCorrect: false },
+      { answerText: "False", isCorrect: true },
     ],
   },
   {
+    id: "upgrades",
     questionText:
-      "I am the homeowner, or am in good relationship with homeowners that I rent from.",
+      "You have already made energy efficiency upgrades to your house like LED Lights, Smart Thermostats, etc.",
     answerOptions: [
-      { answerText: "Yes", isCorrect: true },
-      { answerText: "No", isCorrect: false },
+      { answerText: "True", isCorrect: false },
+      { answerText: "False", isCorrect: true },
     ],
   },
   {
+    id: "homeowner",
+    questionText:
+      "You are the homeowner, or are in good relationship with homeowners that you rent from.",
+    answerOptions: [
+      { answerText: "True", isCorrect: true },
+      { answerText: "False", isCorrect: false },
+    ],
+  },
+  {
+    id: "avg_bill",
     questionText: "What's your average utility bill cost look like?",
     answerOptions: [
-      { answerText: "$50+", isCorrect: true },
+      { answerText: "$50+", isCorrect: false },
       { answerText: "$100+", isCorrect: true },
       { answerText: "$200+", isCorrect: true },
       { answerText: "$300+", isCorrect: true },
@@ -34,27 +47,41 @@ export const questions = [
     ],
   },
   {
+    id: "credit",
     questionText: "Is your Credit Score above 650?",
     answerOptions: [
-      { answerText: "Yes", isCorrect: true },
-      { answerText: "No", isCorrect: false },
+      { answerText: "True", isCorrect: true },
+      { answerText: "False", isCorrect: false },
     ],
   },
   {
-    questionText: "Is your combined taxable household income above $35,000?",
+    id: "income",
+    questionText: "Is your combined taxable household income above $40,000?",
     answerOptions: [
-      { answerText: "Yes", isCorrect: true },
-      { answerText: "No", isCorrect: false },
+      { answerText: "True", isCorrect: true },
+      { answerText: "False", isCorrect: false },
     ],
   },
   {
+    id: "residence",
+    questionText: "What type of home do you live in?",
+    answerOptions: [
+      { answerText: "Single Family", isCorrect: true },
+      { answerText: "Multi Family", isCorrect: false },
+      { answerText: "Condo", isCorrect: false },
+      { answerText: "Trailer", isCorrect: false },
+      { answerText: "Other", isCorrect: false },
+    ],
+  },
+  {
+    id: "ready",
     questionText:
       "How soon would you like to Own your Energy and Stop Renting from a Monopoly?",
     answerOptions: [
       { answerText: "Right Now!", isCorrect: true },
       { answerText: "This Month", isCorrect: true },
-      { answerText: "This Year", isCorrect: true },
-      { answerText: "I Need More Information", isCorrect: true },
+      { answerText: "This Year", isCorrect: false },
+      { answerText: "Need Info", isCorrect: false },
     ],
   },
 ];
@@ -143,3 +170,66 @@ export const testimonials = [
     text: "Austin explained things in a way that I could understand and even explain to my neighbors and friends who were also looking into solar. Highly recommend.",
   },
 ];
+
+export const states = {
+  "": "",
+  AL: "Alabama",
+  AK: "Alaska",
+  AS: "American Samoa",
+  AZ: "Arizona",
+  AR: "Arkansas",
+  CA: "California",
+  CO: "Colorado",
+  CT: "Connecticut",
+  DE: "Delaware",
+  DC: "District Of Columbia",
+  FM: "Federated States Of Micronesia",
+  FL: "Florida",
+  GA: "Georgia",
+  GU: "Guam",
+  HI: "Hawaii",
+  ID: "Idaho",
+  IL: "Illinois",
+  IN: "Indiana",
+  IA: "Iowa",
+  KS: "Kansas",
+  KY: "Kentucky",
+  LA: "Louisiana",
+  ME: "Maine",
+  MH: "Marshall Islands",
+  MD: "Maryland",
+  MA: "Massachusetts",
+  MI: "Michigan",
+  MN: "Minnesota",
+  MS: "Mississippi",
+  MO: "Missouri",
+  MT: "Montana",
+  NE: "Nebraska",
+  NV: "Nevada",
+  NH: "New Hampshire",
+  NJ: "New Jersey",
+  NM: "New Mexico",
+  NY: "New York",
+  NC: "North Carolina",
+  ND: "North Dakota",
+  MP: "Northern Mariana Islands",
+  OH: "Ohio",
+  OK: "Oklahoma",
+  OR: "Oregon",
+  PW: "Palau",
+  PA: "Pennsylvania",
+  PR: "Puerto Rico",
+  RI: "Rhode Island",
+  SC: "South Carolina",
+  SD: "South Dakota",
+  TN: "Tennessee",
+  TX: "Texas",
+  UT: "Utah",
+  VT: "Vermont",
+  VI: "Virgin Islands",
+  VA: "Virginia",
+  WA: "Washington",
+  WV: "West Virginia",
+  WI: "Wisconsin",
+  WY: "Wyoming",
+};

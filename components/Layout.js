@@ -52,7 +52,11 @@ export default function Layout({ children, showBottomPageCTA = true }) {
             <HStack spacing="4">
               <NextLink href="/" passHref>
                 <Box>
-                  <Image height={`${logoHeight}px`} src="/logo-large.png" />
+                  <Image
+                    height={`${logoHeight}px`}
+                    src="/logo-large.png"
+                    alt="Your Local Solar Experts text with Solar Panels, a Sprout and the sun shining behind both."
+                  />
                 </Box>
               </NextLink>
             </HStack>
