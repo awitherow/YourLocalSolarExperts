@@ -31,6 +31,7 @@ export default function LandingPage() {
       );
     }
   }, []);
+
   const headingLineHeightValue = useBreakpointValue({
     base: "1xl",
     lg: "69px",

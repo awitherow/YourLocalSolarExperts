@@ -1,4 +1,5 @@
 import React from "react";
+import NextLink from "next/link";
 import {
   Badge,
   Box,
@@ -6,7 +7,6 @@ import {
   HStack,
   Icon,
   Image,
-  Link,
   Stack,
   Text,
   useBreakpointValue,
@@ -14,20 +14,27 @@ import {
 
 import { VscCircleFilled } from "react-icons/vsc";
 
-export const BlogPost = ({ post, isHero }) => {
+export const BlogPost = ({ post, isHero, slug }) => {
   const sectionHeaderSize = useBreakpointValue({
     base: "md",
     lg: "lg",
     xl: "xl",
   });
 
+  const WrapperComponent = slug ? NextLink : Box;
+
   return (
-    <Link _hover={{ textDecor: "none" }} role="group">
+    <WrapperComponent
+      {...(slug && {
+        href: slug,
+        passHref,
+      })}
+    >
       <Stack spacing="8" px={4}>
         <Box overflow="hidden">
           <Image
-            src={post.image}
-            alt={post.title}
+            src={post?.image}
+            alt={post?.title}
             width="full"
             height={useBreakpointValue({
               base: "15rem",
@@ -46,22 +53,22 @@ export const BlogPost = ({ post, isHero }) => {
               fontWeight="semibold"
               color="accent"
             >
-              <Text>{post.author.name}</Text>
+              <Text>{post?.author?.name}</Text>
               <Icon as={VscCircleFilled} boxSize="2" />
-              <Text> {post.publishedAt}</Text>
+              <Text> {post?.publishedAt}</Text>
             </HStack>
-            <Heading size={sectionHeaderSize}>{post.title}</Heading>
-            <Text color="muted">{post.excerpt}</Text>
+            <Heading size={sectionHeaderSize}>{post?.title}</Heading>
+            <Text color="muted">{post?.excerpt}</Text>
           </Stack>
           <HStack>
-            {post.tags.map((tag, id) => (
-              <Badge key={id} colorScheme={tag.color}>
-                {tag.label}
+            {post?.tags.map((tag, id) => (
+              <Badge key={id} colorScheme={tag?.color}>
+                {tag?.label}
               </Badge>
             ))}
           </HStack>
         </Stack>
       </Stack>
-    </Link>
+    </WrapperComponent>
   );
 };

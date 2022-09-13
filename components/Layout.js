@@ -2,24 +2,42 @@ import React, { useEffect } from "react";
 import NextLink from "next/link";
 import {
   Box,
+  Button,
   Container,
   Flex,
   Heading,
   HStack,
+  Image,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Stack,
   Text,
   useBreakpointValue,
-  Image,
   useColorModeValue as mode,
-  Button,
-  ButtonGroup,
 } from "@chakra-ui/react";
+
+import { GiHamburgerMenu } from "react-icons/gi";
 
 import { FreeQuoteButton } from "components/FreeQuoteButton";
 
 import TawkTo from "tawkto-react";
 
-export default function Layout({ children, showBottomPageCTA = true }) {
+const NAV_LINKS = [
+  {
+    href: "/articles",
+    text: "Learn About Solar",
+  },
+];
+
+const N_ENSURE_MAX = 9999;
+
+export default function Layout({
+  children,
+  showBottomPageCTA = true,
+  wrapperStyles,
+}) {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       const tawk = new TawkTo("62d0e6c57b967b1179999dde", "1g800asr3");
@@ -37,17 +55,12 @@ export default function Layout({ children, showBottomPageCTA = true }) {
     xl: "xl",
   });
 
-  const logoHeight = useBreakpointValue({ base: 50, md: 60 });
+  const logoHeight = useBreakpointValue({ base: 60 });
 
   return (
     <>
       <Box as="section" maxW={1280} margin="0 auto" px={4}>
-        <Box
-          as="nav"
-          bg="bg-surface"
-          boxShadow={mode("sm", "sm-dark")}
-          py={{ base: "3", lg: "4" }}
-        >
+        <Box as="nav" bg="bg-surface" py={{ base: "3", lg: "4" }}>
           <Flex justify="space-between" alignItems="center">
             <HStack spacing="4">
               <NextLink href="/" passHref>
@@ -60,11 +73,46 @@ export default function Layout({ children, showBottomPageCTA = true }) {
                 </Box>
               </NextLink>
             </HStack>
-            <FreeQuoteButton responsive />
+            {isDesktop ? (
+              <>
+                <Flex align="center" justify="space-around">
+                  <FreeQuoteButton />
+                  <Box ml={isDesktop ? 8 : 4}>
+                    {NAV_LINKS.map(({ href, text }) => (
+                      <NextLink href={href}>{text}</NextLink>
+                    ))}
+                  </Box>
+                </Flex>
+              </>
+            ) : (
+              <Menu zIndex={N_ENSURE_MAX}>
+                <MenuButton
+                  zIndex={N_ENSURE_MAX}
+                  as={Button}
+                  rightIcon={<GiHamburgerMenu />}
+                >
+                  Menu
+                </MenuButton>
+                <MenuList zIndex={N_ENSURE_MAX}>
+                  <NextLink passHref href="/">
+                    <MenuItem zIndex={N_ENSURE_MAX}>Home</MenuItem>
+                  </NextLink>
+                  <NextLink
+                    passHref
+                    href="/get-a-custom-solar-quote-for-your-proprety"
+                  >
+                    <MenuItem zIndex={N_ENSURE_MAX}>Get a Free Quote</MenuItem>
+                  </NextLink>
+                  <NextLink href="/articles" passHref>
+                    <MenuItem zIndex={N_ENSURE_MAX}>Latest Solar News</MenuItem>
+                  </NextLink>
+                </MenuList>
+              </Menu>
+            )}
           </Flex>
         </Box>
       </Box>
-      {children}
+      <Box {...wrapperStyles}>{children}</Box>
       {showBottomPageCTA && (
         <Box as="section" bg="bg-surface" py={{ base: "16", md: "24" }}>
           <Container>

@@ -11,7 +11,7 @@ export const FreeQuoteButton = () => {
         fontWeight="bold"
         fontSize="md"
       >
-        {isDesktop ? "Get a Free Quote" : "Free Quote"}
+        Free Quote
       </Button>
     </NextLink>
   );
