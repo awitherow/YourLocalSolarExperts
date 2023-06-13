@@ -5,6 +5,7 @@ import CtaFooter from "components/CtaFooter";
 import { toKebabCase } from "utils";
 import { getLatestArticles } from "data";
 import { headingStyle, subHeadingStyle } from "styles";
+import CtaButton from "components/CtaButton";
 
 const Page = async () => (
   <>
@@ -16,6 +17,7 @@ const Page = async () => (
       <p className={subHeadingStyle}>
         Let&apos;s get a free quote written up for you and set you up for massive savings in solar.
       </p>
+      <CtaButton />
     </div>
 
     <div className="mx-auto max-w-2xl lg:max-w-4xl">

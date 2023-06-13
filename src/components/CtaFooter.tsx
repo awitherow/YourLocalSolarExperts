@@ -1,5 +1,4 @@
-import NextLink from "next/link";
-import { primaryBtnStyles } from "styles";
+import CtaButton from "./CtaButton";
 
 export default function CtaFooter() {
   return (
@@ -12,11 +11,7 @@ export default function CtaFooter() {
           The opportunity for Solar is Now. Get you Proposal and a Personalized Clean Energy Consultation Plan and join
           Thousands Getting Started with Solar and Secure Your Own Solar Power Plant, Today!
         </p>
-        <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center">
-          <NextLink href="/consult" className={primaryBtnStyles}>
-            Get Started
-          </NextLink>
-        </div>
+        <CtaButton />
       </div>
     </>
   );
