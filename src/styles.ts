@@ -11,4 +11,4 @@ export const secondaryHeaderStyles =
 export const btnStyles = "py-4 px-8 text-sm lg:text-lg lg:mr-4 rounded-md mb-2";
 
 export const primaryBtnStyles = twMerge("bg-orange-500 text-white", btnStyles);
-export const secondaryBtnStyles = twMerge("bg-blue-500 text-white", btnStyles);
+export const secondaryBtnStyles = twMerge("bg-slate-500 text-white", btnStyles);

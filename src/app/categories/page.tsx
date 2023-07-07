@@ -26,7 +26,7 @@ export default async function BlogPage() {
       <div className="flex flex-wrap items-center mb-8 justify-center">
         {categories.map((category) => (
           <a href={`#${category}`} key={category}>
-            <div className="rounded-lg py-2 px-4 md:py-4 md:px-8 bg-green-500 text-white m-1 md:m-2 text-md">
+            <div className="rounded-lg py-2 px-4 md:py-4 md:px-8 bg-slate-500 text-white m-1 md:m-2 text-md">
               {category}
             </div>
           </a>
@@ -71,8 +71,8 @@ export default async function BlogPage() {
                         </NextLink>
                         <p className="text-xs text-gray-300 mt-2">{trimText(article.description, 120)}</p>
                       </div>
-                      <span className="lg:ml-8 inline-flex items-center py-1 px-3 rounded-md text-sm font-medium bg-green-200 text-gray-800">
-                        {new Date(article.date).toLocaleDateString("en-GB", {
+                      <span className="lg:ml-8 inline-flex items-center py-1 px-3 rounded-md text-sm font-medium bg-slate-200 text-gray-800">
+                        {new Date(article.datePublished).toLocaleDateString("en-GB", {
                           dateStyle: "long",
                         })}
                       </span>
