@@ -40,7 +40,7 @@ const Page = async () => (
             </div>
             <div className="py-4">
               <div className="flex flex-wrap items-center text-xs">
-                <DateTag date={article.datePublished} />
+                <DateTag date={article.dateModifiedPublished} />
                 {article.tags.map((tag) => (
                   <CategoryTag key={tag} tag={tag} />
                 ))}

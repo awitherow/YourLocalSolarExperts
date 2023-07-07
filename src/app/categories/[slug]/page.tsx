@@ -74,10 +74,10 @@ export default async function CategoryPage({
                 <div className="max-w-xl">
                   <div className="flex flex-wrap items-center text-xs">
                     <time
-                      dateTime={new Date(article.dateModified).toISOString()}
+                      dateTime={new Date(article.dateModifiedModified).toISOString()}
                       className="rounded-lg px-2 py-1 bg-blue-500 text-white -ml-1 mr-3 mb-2"
                     >
-                      {new Date(article.dateModified).toLocaleDateString("en-GB", {
+                      {new Date(article.dateModifiedModified).toLocaleDateString("en-GB", {
                         dateStyle: "long",
                       })}
                     </time>
