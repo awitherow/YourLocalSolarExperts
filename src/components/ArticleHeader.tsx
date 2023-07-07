@@ -1,48 +1,39 @@
 "use client";
 
-import { Heading1, Paragraph } from "mdx-components";
-import Image from "next/image";
-import Link from "next/link";
-import { toKebabCase } from "utils";
+import { Heading1, Heading2 } from "mdx-components";
+
 import BlogImage from "./BlogImage";
+import CategoryTag from "./Tags/Category";
+import DateTag from "./Tags/Date";
 
 export type Metadata = {
   title: string;
   description: string;
   slug: string;
-  date: string;
+  datePublished: string;
+  dateModified: string;
   tags: string[];
   image: string;
+  imageAlt: string;
 };
 
-export function ArticleHeader({ metadata }: { metadata: Metadata }) {
+export function ArticleHeader({ metadata, withAds = false }: { metadata: Metadata; withAds?: boolean }) {
   return (
     <>
       <Heading1>{metadata.title}</Heading1>
       <div className="flex flex-wrap items-center mb-4">
-        <time
-          dateTime={new Date(metadata.date).toISOString()}
-          className="rounded-lg px-2 py-1 bg-blue-500 text-white text-sm md:text-base -ml-1 mr-3 mb-2"
-        >
-          {new Date(metadata.date).toLocaleDateString("en-GB", {
-            dateStyle: "long",
-          })}
-        </time>
-        {metadata.tags.map((tag) => {
-          const kebabTab = toKebabCase(tag);
-          return (
-            <Link
-              href={`/categories/${kebabTab}`}
-              key={kebabTab}
-              className="rounded-lg px-2 py-1 bg-green-500 text-white text-sm md:text-base -ml-1 mr-3 mb-2"
-            >
-              {tag}
-            </Link>
-          );
-        })}
+        <DateTag date={metadata.datePublished} />
+        {metadata.tags.map((tag) => (
+          <CategoryTag tag={tag} key={tag} />
+        ))}
       </div>
-      <BlogImage src={metadata.image} alt={""} />
-      <Paragraph>{metadata.description}</Paragraph>
+      <BlogImage src={metadata.image} alt={metadata.imageAlt ?? ""} />
+      {withAds ? (
+        <p className="text-xs text-gray-400 mt-1 text-right">
+          This post may contain advertisements through Ezoic and Amazon.
+        </p>
+      ) : null}
+      <Heading2>{metadata.description}</Heading2>
     </>
   );
 }

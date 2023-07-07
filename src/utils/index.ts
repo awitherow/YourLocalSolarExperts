@@ -1,5 +1,8 @@
 export function isEmpty(obj: any) {
-  return Object.prototype.toString.call(obj) === "[object Object]" && JSON.stringify(obj) === "{}";
+  return (
+    Object.prototype.toString.call(obj) === "[object Object]" &&
+    JSON.stringify(obj) === "{}"
+  );
 }
 
 export function toKebabCase(str: string): string {
@@ -16,12 +19,20 @@ export function trimText(text: string, length: number): string {
   return text.substring(0, length) + "...";
 }
 
+export function toTitleCase(str: string): string {
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 export function reverseKebabToTitleCase(kebabCase: string): string {
   const words = kebabCase.split("-");
 
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
-    words[i] = word.charAt(0).toUpperCase() + word.slice(1);
+    words[i] = toTitleCase(word);
   }
 
   return words.join(" ");
@@ -30,5 +41,5 @@ export function reverseKebabToTitleCase(kebabCase: string): string {
 export function calculateReadingTime(wordCount: number): string {
   const wordsPerMinute = 200;
   const minutes = Math.round(wordCount / wordsPerMinute);
-  return `Reading Time: ${minutes} minute${minutes === 1 ? '' : 's'}`;
+  return `Reading Time: ${minutes} minute${minutes === 1 ? "" : "s"}`;
 }

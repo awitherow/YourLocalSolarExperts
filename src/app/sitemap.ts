@@ -10,7 +10,7 @@ type CityType = {
   county: string;
 };
 
-export const articleSlugs: string[] = [];
+export const articleSlugs: string[] = ["maximizing-solar-installation-efficiency"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
@@ -36,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     //   )}`,
     //   lastModified: new Date(),
     // })),
-    ...(await Promise.all(articleSlugs.map((slug) => import(`markdown/${slug}.mdx`))))
+    ...(await Promise.all(articleSlugs.map((slug) => import(`posts/${slug}.mdx`))))
       .reduce<string[]>(
         (acc, { metadata }) => [...acc, ...metadata.tags.filter((tag: string) => !acc.includes(tag))],
         []

@@ -1,10 +1,11 @@
 import { ArticleHeader } from "components/ArticleHeader";
 import { notFound } from "next/navigation";
 import CtaFooter from "components/CtaFooter";
+import StructuredData from "components/StructuredData";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   try {
-    const { metadata } = await import(`markdown/${params.slug}.mdx`);
+    const { metadata } = await import(`posts/${params.slug}.mdx`);
 
     return {
       title: metadata.title,
@@ -31,10 +32,11 @@ export default async function ArticlePage({
   };
 }) {
   try {
-    const { default: Content, metadata } = await import(`markdown/${params.slug}.mdx`);
+    const { default: Content, metadata } = await import(`posts/${params.slug}.mdx`);
 
     return (
       <div className="mx-auto max-w-3xl text-base leading-7 text-white">
+        <StructuredData type="Article" {...{ ...metadata, headline: metadata.title }} />
         <ArticleHeader metadata={metadata} />
         <Content />
         <CtaFooter />

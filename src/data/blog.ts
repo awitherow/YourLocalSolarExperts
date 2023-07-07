@@ -2,19 +2,14 @@ import { articleSlugs } from "app/sitemap";
 import { Metadata } from "components/ArticleHeader";
 
 export const getArticles = async () =>
-  (
-    await Promise.all(
-      articleSlugs.map((slug) => import(`markdown/${slug}.mdx`))
-    )
-  )
+  (await Promise.all(articleSlugs.map((slug) => import(`posts/${slug}.mdx`))))
     .map<Metadata>(({ metadata }, index) => ({
       ...metadata,
       slug: articleSlugs[index],
     }))
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .sort((a, b) => new Date(b.dateModified).getTime() - new Date(a.dateModified).getTime());
 
-export const getLatestArticles = async (count: number) =>
-  (await getArticles())?.slice(0, count);
+export const getLatestArticles = async (count: number) => (await getArticles())?.slice(0, count);
 
 export async function getCategories() {
   const allTags = (await getArticles()).flatMap((article) => article.tags);

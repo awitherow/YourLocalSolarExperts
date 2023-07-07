@@ -19,15 +19,15 @@ export function Heading1(properties: JSX.IntrinsicElements["h1"]) {
 }
 
 export function Heading2(properties: JSX.IntrinsicElements["h2"]) {
-  return <h2 className="text-2xl font-bold tracking-tight text-white mt-12 mb-8" {...properties} />;
+  return <h2 className="text-4xl font-bold tracking-tight text-white mt-12 mb-8 leading-10" {...properties} />;
 }
 
 export function Heading3(properties: JSX.IntrinsicElements["h2"]) {
-  return <h3 className="text-lg font-bold text-white mt-8 mb-4" {...properties} />;
+  return <h3 className="text-2xl font-bold text-white mt-8 mb-4" {...properties} />;
 }
 
 export function Paragraph(properties: JSX.IntrinsicElements["p"]) {
-  return <p className="my-8" {...properties} />;
+  return <p className="my-8 text-lg leading-7" {...properties} />;
 }
 
 export function OrderedList(properties: JSX.IntrinsicElements["ol"]) {

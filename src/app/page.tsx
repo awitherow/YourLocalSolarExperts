@@ -2,10 +2,11 @@ import React from "react";
 import NextLink from "next/link";
 import Image from "next/image";
 import CtaFooter from "components/CtaFooter";
-import { toKebabCase } from "utils";
-import { getLatestArticles } from "data";
+import { getLatestArticles, getPopularCategories } from "data";
 import { headingStyle, subHeadingStyle } from "styles";
 import CtaButton from "components/CtaButton";
+import CategoryTag from "components/Tags/Category";
+import DateTag from "components/Tags/Date";
 
 const Page = async () => (
   <>
@@ -34,31 +35,18 @@ const Page = async () => (
         {(await getLatestArticles(3)).map((article) => (
           <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">
             <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-gray-50">
-              <Image src={article.image} alt="" fill className="object-cover" />
+              <Image src={article.image} alt={article.imageAlt} fill className="object-cover" />
               <div className="absolute inset-0 shadow-inner bg-gradient-to-br from-white/20" />
             </div>
             <div className="py-4">
               <div className="flex flex-wrap items-center text-xs">
-                <time
-                  dateTime={new Date(article.date).toISOString()}
-                  className="rounded-lg px-2 py-1 bg-blue-500 text-white -ml-1 mr-3 mb-2"
-                >
-                  {new Date(article.date).toLocaleDateString("en-GB", {
-                    dateStyle: "long",
-                  })}
-                </time>
+                <DateTag date={article.datePublished} />
                 {article.tags.map((tag) => (
-                  <NextLink
-                    href={`/categories/${toKebabCase(tag)}`}
-                    key={tag}
-                    className="rounded-lg px-2 py-1 bg-green-500 text-white -ml-1 mr-3 mb-2"
-                  >
-                    {tag}
-                  </NextLink>
+                  <CategoryTag key={tag} tag={tag} />
                 ))}
               </div>
               <div className="group relative max-w-xl">
-                <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-white-900 group-hover:text-gray-200">
+                <h3 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-white-900 group-hover:text-gray-200 underline">
                   <NextLink
                     href={`/blog/${article.slug}`}
                     className="rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-200"
@@ -66,12 +54,25 @@ const Page = async () => (
                     <span className="absolute inset-0" />
                     {article.title}
                   </NextLink>
-                </h2>
+                </h3>
                 <p className="mt-5 text-sm leading-6 text-white">{article.description}</p>
               </div>
             </div>
           </article>
         ))}
+      </div>
+      <div className="my-16 sm:my-24 lg:my-32 text-center">
+        <h2 className={headingStyle}>Popular Categories</h2>
+        <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto text-center">
+          Discover a wealth of gardening info! Explore categories on soil health, water conservation, plants, and more.
+          Find tips and content tailored to your needs.
+        </p>
+
+        <div className="flex flex-wrap justify-center items-center">
+          {(await getPopularCategories()).map((category) => (
+            <CategoryTag size="lg" key={category} tag={category} />
+          ))}
+        </div>
       </div>
 
       <CtaFooter />
