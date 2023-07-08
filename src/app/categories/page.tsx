@@ -72,7 +72,7 @@ export default async function BlogPage() {
                         <p className="text-xs text-gray-300 mt-2">{trimText(article.description, 120)}</p>
                       </div>
                       <span className="lg:ml-8 inline-flex items-center py-1 px-3 rounded-md text-sm font-medium bg-slate-200 text-gray-800">
-                        {new Date(article.dateModifiedPublished).toLocaleDateString("en-GB", {
+                        {new Date(article.dateModified).toLocaleDateString("en-GB", {
                           dateStyle: "long",
                         })}
                       </span>

@@ -26,7 +26,7 @@ const BlogPage = async () => (
           </div>
           <div className="max-w-xl">
             <div className="flex flex-wrap items-center text-xs">
-              <DateTag date={article.dateModifiedModified} />
+              <DateTag date={article.dateModified} />
               {article.tags.map((tag) => (
                 <CategoryTag key={tag} tag={tag} />
               ))}
