@@ -15,23 +15,23 @@ export const articleSlugs: string[] = ["maximizing-solar-installation-efficiency
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
-      url: "yourlocalsolarexperts.com",
+      url: "https://yourlocalsolarexperts.com",
       lastModified: new Date(),
     },
     {
-      url: "yourlocalsolarexperts.com/consult",
+      url: "https://yourlocalsolarexperts.com/consult",
       lastModified: new Date(),
     },
     {
-      url: "yourlocalsolarexperts.com/categories",
+      url: "https://yourlocalsolarexperts.com/categories",
       lastModified: new Date(),
     },
     {
-      url: "yourlocalsolarexperts.com/blog",
+      url: "https://yourlocalsolarexperts.com/blog",
       lastModified: new Date(),
     },
     // ...(getCities as CityType[])?.map(({ zip_code, city, state, county }) => ({
-    //   url: `yourlocalsolarexperts.com/service-areas/${toKebabCase(
+    //   url: `https://yourlocalsolarexperts.com/service-areas/${toKebabCase(
     //     `${city} ${state} ${zip_code}}`
     //   )}`,
     //   lastModified: new Date(),
@@ -42,11 +42,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         []
       )
       .map((category) => ({
-        url: `yourlocalsolarexperts.com/categories/${toKebabCase(category)}`,
+        url: `https://yourlocalsolarexperts.com/categories/${toKebabCase(category)}`,
         lastModified: new Date(),
       })),
     ...articleSlugs.map((slug) => ({
-      url: `yourlocalsolarexperts.com/blog/${slug}`,
+      url: `https://yourlocalsolarexperts.com/blog/${slug}`,
       lastModified: new Date(),
     })),
   ];
