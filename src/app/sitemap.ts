@@ -14,6 +14,7 @@ export const articleSlugs: string[] = [
   "maximizing-solar-installation-efficiency",
   "pros-cons-solar-installations",
   "finance-solar-installation-comparing-powur-home-equity-loans-bank-loans",
+  "understanding-solar-installations-and-energy-providers",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
