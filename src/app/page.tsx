@@ -10,7 +10,7 @@ import DateTag from "components/Tags/Date";
 
 const Page = async () => (
   <>
-    <div className="text-center sm:pt-10 md:pt-20 lg:pt-30 mb-24" id="procedures">
+    <div className="text-center sm:pt-10 md:pt-20 lg:pt-30 mb-24">
       <h1 className={headingStyle}>
         Stop Renting. <br />
         Start Owning Your Energy.
