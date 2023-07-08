@@ -10,7 +10,11 @@ type CityType = {
   county: string;
 };
 
-export const articleSlugs: string[] = ["maximizing-solar-installation-efficiency", "pros-cons-solar-installations"];
+export const articleSlugs: string[] = [
+  "maximizing-solar-installation-efficiency",
+  "pros-cons-solar-installations",
+  "finance-solar-installation-comparing-powur-home-equity-loans-bank-loans",
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
