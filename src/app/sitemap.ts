@@ -17,6 +17,8 @@ export const articleSlugs: string[] = [
   "understanding-solar-installations-and-energy-providers",
   "investing-in-solar-installations-benefits-with-powur",
   "solar-tax-credits-maximizing-savings-on-solar-installations",
+  "going-off-grid-with-solar-power-a-sustainable-solution-for-energy-independence",
+  
   
 ];
 
