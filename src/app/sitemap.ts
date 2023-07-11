@@ -20,7 +20,8 @@ export const articleSlugs: string[] = [
   "going-off-grid-with-solar-power-a-sustainable-solution-for-energy-independence",
   "exploring-different-types-of-solar-panels-features-and-benefits",
   "save-money-reduce-carbon-footprint-solar-installations",
-
+  "understanding-cost-benefits-solar-installations",
+  
   
 ];
 
