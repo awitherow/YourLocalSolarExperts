@@ -19,6 +19,7 @@ export const articleSlugs: string[] = [
   "solar-tax-credits-maximizing-savings-on-solar-installations",
   "going-off-grid-with-solar-power-a-sustainable-solution-for-energy-independence",
   "exploring-different-types-of-solar-panels-features-and-benefits",
+  "save-money-reduce-carbon-footprint-solar-installations",
 
   
 ];
