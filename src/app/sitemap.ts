@@ -12,6 +12,7 @@ export const articleSlugs: string[] = [
   "exploring-different-types-of-solar-panels-features-and-benefits",
   "save-money-reduce-carbon-footprint-solar-installations",
   "understanding-cost-benefits-solar-installations",
+  "solar-installation-maintenance-key-tasks-ensure-optimal-performance",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
