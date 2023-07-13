@@ -13,6 +13,7 @@ export const articleSlugs: string[] = [
   "save-money-reduce-carbon-footprint-solar-installations",
   "understanding-cost-benefits-solar-installations",
   "solar-installation-maintenance-key-tasks-ensure-optimal-performance",
+  "how-long-does-it-take-to-install-solar-panels-understanding-the-timeline",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
