@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { toKebabCase } from "utils";
+import cities from "../data/sets/cities.json";
 
 export const articleSlugs: string[] = [
   "maximizing-solar-installation-efficiency",
@@ -38,12 +39,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://yourlocalsolarexperts.com/blog",
       lastModified: new Date(),
     },
-    // ...(getCities as CityType[])?.map(({ zip_code, city, state, county }) => ({
-    //   url: `https://yourlocalsolarexperts.com/located-in/${toKebabCase(
-    //     `${city} ${state} ${zip_code}}`
-    //   )}`,
-    //   lastModified: new Date(),
-    // })),
+    ...(cities as { city: string; state: string }[])
+      ?.reduce((acc: any, curr) => {
+        if (acc.some((c) => c?.city === curr.city && c?.state === curr.state)) return acc;
+        else return [...acc, curr];
+      }, [])
+      .map(({ city, state }) => ({
+        url: `https://yourlocalsolarexperts.com/in/${toKebabCase(`${city} ${state}`)}`,
+        lastModified: new Date(),
+      })),
     ...(await Promise.all(articleSlugs.map((slug) => import(`posts/${slug}.mdx`))))
       .reduce<string[]>(
         (acc, { metadata }) => [...acc, ...metadata.tags.filter((tag: string) => !acc.includes(tag))],
