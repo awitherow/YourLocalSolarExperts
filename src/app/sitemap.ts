@@ -14,7 +14,9 @@ export const articleSlugs: string[] = [
   "understanding-cost-benefits-solar-installations",
   "solar-installation-maintenance-key-tasks-ensure-optimal-performance",
   "how-long-does-it-take-to-install-solar-panels-understanding-the-timeline",
-  "The Benefits of Solar Installations: Lowered Bills, Energy Independence, and Environmental Sustainability",
+  "benefits-of-solar-installations-lowered-bills-energy-independence-environmental-sustainability",
+  
+
 
 ];
 
