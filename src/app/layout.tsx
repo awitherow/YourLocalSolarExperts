@@ -21,24 +21,15 @@ const Layout = ({ children }: LayoutProps) => (
     <meta name="p:domain_verify" content="9df5a8c506144650de26b1b9744e6e88" />
     {process.env.NODE_ENV !== "development" && (
       <>
-        {/* <Script
-          strategy="afterInteractive"
-          id="gtag"
-          src="https://www.googletagmanager.com/gtag/js?id=G-361FWTRLD3"
-        />
+        <Script strategy="afterInteractive" id="gtag" src="https://www.googletagmanager.com/gtag/js?id=G-RM29MS2868" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-361FWTRLD3');
+        gtag('config', 'G-RM29MS2868');
       `}
         </Script>
-        <Script
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2149528894778035"
-          crossOrigin="anonymous"
-        /> */}
       </>
     )}
     <body className="bg-slate-400">
