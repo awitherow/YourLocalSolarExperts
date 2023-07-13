@@ -1,6 +1,5 @@
 import { getArticles, getLatestArticles, getCategories, getPopularCategories } from "./blog";
 import { getProducts } from "./products";
-import { getCities } from "./locations";
 
 export const questions = [
   {
@@ -148,4 +147,4 @@ export const posts = [
   },
 ];
 
-export { getCities, getArticles, getLatestArticles, getCategories, getPopularCategories, getProducts };
+export {  getArticles, getLatestArticles, getCategories, getPopularCategories, getProducts };

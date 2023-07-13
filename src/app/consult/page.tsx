@@ -35,21 +35,6 @@ const ConsultationPage: React.FC = () => {
     });
   };
 
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    if (e.target.checked) {
-      setFormState({
-        ...formState,
-        interests: [...formState.interests, value],
-      });
-    } else {
-      setFormState({
-        ...formState,
-        interests: formState.interests.filter((interest) => interest !== value),
-      });
-    }
-  };
-
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const schema = yup.object().shape({

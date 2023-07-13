@@ -1,15 +1,6 @@
 import { MetadataRoute } from "next";
 import { toKebabCase } from "utils";
 
-import { getCities } from "data";
-
-type CityType = {
-  zip_code: number;
-  city: string;
-  state: string;
-  county: string;
-};
-
 export const articleSlugs: string[] = [
   "maximizing-solar-installation-efficiency",
   "pros-cons-solar-installations",
@@ -21,8 +12,6 @@ export const articleSlugs: string[] = [
   "exploring-different-types-of-solar-panels-features-and-benefits",
   "save-money-reduce-carbon-footprint-solar-installations",
   "understanding-cost-benefits-solar-installations",
-  
-  
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -44,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     // ...(getCities as CityType[])?.map(({ zip_code, city, state, county }) => ({
-    //   url: `https://yourlocalsolarexperts.com/service-areas/${toKebabCase(
+    //   url: `https://yourlocalsolarexperts.com/located-in/${toKebabCase(
     //     `${city} ${state} ${zip_code}}`
     //   )}`,
     //   lastModified: new Date(),
